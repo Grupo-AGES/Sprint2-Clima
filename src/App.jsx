@@ -1,6 +1,7 @@
 import axios from 'axios'
 import './App.css'
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
+import DiaAtual from './Components/DiaAtual';
 
 function App() {
 
@@ -64,9 +65,12 @@ function App() {
 
 
   return (
+    <Fragment>
     <div>
       <input className='city' placeholder='Cidade' name="cidade" value={inputValue} onChange={(e) => { setInputValue(e.target.value) }}></input>
     </div>
+    <DiaAtual/>
+    </Fragment>
   )
 }
 
