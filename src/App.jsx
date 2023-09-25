@@ -94,6 +94,7 @@ function App() {
   return (
     <Fragment>
       <div className="inputPrincipal">
+      <span className="locationSymbol">&#x1F4CD;</span>
         <input
           className="city"
           placeholder="Cidade"
