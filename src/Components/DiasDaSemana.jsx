@@ -1,5 +1,6 @@
 import './DiasDaSemana.css';
 import React, { Fragment } from "react";
+import IconeTemp from './IconeTemp';
 
 function DiasDaSemana(props) {
   const { maxSemana, minSemana } = props;
@@ -14,7 +15,6 @@ function DiasDaSemana(props) {
     i = (i + 1) % 7;
   }
   
-
   return (
     <Fragment>
       <div className='diaDaSemana'>
