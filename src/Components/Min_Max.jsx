@@ -4,15 +4,19 @@ import "./Min_Max.css";
 function Min_Max(props) {
   return (
     <Fragment>
-      <div className="min">
-        <p>Temperatura Mínima</p>
-        {props.min}
-        {<span>°</span>}
-      </div>
-      <div className="max">
-        <p>Temperatura Máxima</p>
-        {props.max}
-        {<span>°</span>}
+      <div className="geralMinMax">
+        <div className="minMaxContainer">
+          <div className="minMaxItem">
+            <p>Min</p>
+            {props.min}
+            {<span>°</span>}
+          </div>
+          <div className="minMaxItem">
+            <p>Max</p>
+            {props.max}
+            {<span>°</span>}
+          </div>
+        </div>
       </div>
     </Fragment>
   );

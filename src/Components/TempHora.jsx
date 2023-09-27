@@ -3,11 +3,10 @@ import './TempHora.css'
 
 const TempHora = (props) => {
   return (
-    <div>
-      <p>Temperatura por hora</p>
+    <div className='geral'>
       {props.temperature2.map((temp, index) => (
-        <div key={index}>
-          <span>{index}:00</span> {temp}°
+        <div className='index' key={index}>
+          <span className='hour'>{index}:00</span><br/> {temp}°
         </div>
       ))}
     </div>

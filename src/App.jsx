@@ -20,17 +20,16 @@ function App() {
   const [sunsetDate, setSunset] = useState("");
 
   const options = {
-      hour: 'numeric',
-      minute: 'numeric',
-      second: 'numeric',
-      hour12: false,
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+    hour12: false,
   };
 
-  const formatter = new Intl.DateTimeFormat('pt-BR', options);
+  const formatter = new Intl.DateTimeFormat("pt-BR", options);
 
   async function getData() {
     if (inputValue) {
-      console.log("funciona o getdata");
       const urlApi1 = `https://api.geoapify.com/v1/geocode/autocomplete?text=${inputValue}&format=json&apiKey=e72a5844973a4abba1de87bfac36415f`;
       axios
         .get(urlApi1)
@@ -66,8 +65,8 @@ function App() {
               const rainDaily = response2.data.daily.rain_sum[0];
               const cloudcover = response2.data.hourly.cloudcover[0];
 
-              const sunriseDate = new Date(sunrise); 
-              const sunsetDate = new Date(sunset); 
+              const sunriseDate = new Date(sunrise);
+              const sunsetDate = new Date(sunset);
 
               setDadosApi(data);
               setTemperature(temperature);
@@ -90,11 +89,10 @@ function App() {
     }
   }
 
-
   return (
     <Fragment>
       <div className="inputPrincipal">
-      <span className="locationSymbol">&#x1F4CD;</span>
+        <span className="locationSymbol">&#x1F4CD;</span>
         <input
           className="city"
           placeholder="Cidade"
@@ -107,22 +105,22 @@ function App() {
         <button onClick={getData}>pesquisar</button>
       </div>
       <div>
-        <TempAtual temperature={temperature[0]}/>
+        <TempAtual temperature={temperature[0]} />
       </div>
       <div>
-        <Min_Max min={min} max={max}/>
+        <Min_Max min={min} max={max} />
       </div>
       <div>
-        <TempHora temperature2={temperature2}/>
+        <TempHora temperature2={temperature2} />
       </div>
       <div>
-        <Preciptation precipitation={precipitation}/>
+        <Preciptation precipitation={precipitation} />
       </div>
       <div>
-      <Sunrise sunrise={formatter.format(sunriseDate)}/>
+        <Sunrise sunrise={formatter.format(sunriseDate)} />
       </div>
       <div>
-        <Sunset sunset={formatter.format(sunsetDate)}/>
+        <Sunset sunset={formatter.format(sunsetDate)} />
       </div>
     </Fragment>
   );
