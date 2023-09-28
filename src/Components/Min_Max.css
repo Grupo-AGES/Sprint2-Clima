@@ -1,0 +1,26 @@
+.geralMinMax {
+    display: flex;
+    background-color: #fff;
+    color: black;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: fit-content; 
+  }
+  
+  .minMaxContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px; 
+  }
+  
+  .minMaxItem {
+    text-align: center;
+  }
+  
+  .minMaxItem:first-child {
+    margin-right: 10px; 
+  }
+  
+
+  

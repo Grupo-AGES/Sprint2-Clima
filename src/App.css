@@ -5,6 +5,12 @@
   text-align: center;
 }
 
+.locationSymbol {
+  font-size: 24px; /* Tamanho do símbolo */
+  margin-left: 10px; /* Espaço à esquerda do símbolo para separá-lo do input */
+  color: #333; /* Cor do símbolo */
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
