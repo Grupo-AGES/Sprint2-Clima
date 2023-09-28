@@ -8,29 +8,22 @@ import diaNum from '../assets/icones/diaNum.json'
 import diaBom from '../assets/icones/diaBom.json'
 
 function IconeTemp(props) {
-  const { precipitationProbDay, sunset, sunrise } = props;
+  const { precipitationSumDay, sunset, sunrise } = props;
   const hoje = new Date;
   const time = hoje.getHours()+':'+hoje.getMinutes(); //pega a hora e minuto do momento
-  console.log("sunset", props.sunset)//ta vindo string vazia, pegar matheus
-  console.log("sunrise", props.sunrise)//ta vindo string vazia, pegar matheus
-  // const partsSunset = sunset.split('T');
-  // const partsSunrise = sunrise.split('T'); 
-  // const hourSunset = partsSunset[1].substring(0, 5);
-  // const hourSunrise = partsSunrise[1].substring(0, 5);
-  // console.log("sunset", hourSunset)
-  // console.log("sunrise", hourSunrise)
-  if (precipitationProbDay >= 60 && time >= sunset && time < sunrise) {
-    return <Lottie animationData={noiteChuva}/>
-  } else if (precipitationProbDay < 60 && precipitationProbDay > 30 && time >= sunset && time < sunrise) {
-    return <Lottie animationData={noiteNum}/>
-  } else if (precipitationProbDay <= 30 && time >= sunset && time < sunrise) {
-    return <Lottie animationData={noiteBoa}/>
-  } else if(precipitationProbDay>=60 && time<sunset && time>=sunrise){
-    return <Lottie animationData={diaChuva}/>
-  }else if (precipitationProbDay<60 && precipitationProbDay>30 && time<sunset && time>=sunrise){
-    return <Lottie animationData={diaNum}/>
+
+  if (precipitationSumDay >= 5 && time >= sunset && time < sunrise) {
+    return (<div className='animationIcon'><Lottie animationData={noiteChuva}/></div>)
+  } else if (precipitationSumDay < 5 && precipitationSumDay > 3 && time >= sunset && time < sunrise) {
+    return (<div className='animationIcon'><Lottie animationData={noiteNum}/></div>)
+  } else if (precipitationSumDay <= 3 && time >= sunset && time < sunrise) {
+    return (<div className='animationIcon'><Lottie animationData={noiteBoa}/></div>)
+  } else if(precipitationSumDay>=5 && time<sunset && time>=sunrise){
+    return (<div className='animationIcon'><Lottie animationData={diaChuva}/></div>)
+  }else if (precipitationSumDay<5 && precipitationSumDay>3 && time<sunset && time>=sunrise){
+    return (<div className='animationIcon'><Lottie animationData={diaNum}/></div>)
   }else{
-    return <Lottie animationData={diaBom}/>
+    return (<div className='animationIcon'><Lottie animationData={diaBom}/></div>)
   }
 
 }

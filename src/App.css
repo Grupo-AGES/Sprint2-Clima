@@ -3,12 +3,28 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mainSup{
+  display: flex;
+  flex-direction: column;
+}
+
+.mainInf{
+  display: flex;
+  flex-direction: row;
 }
 
 .locationSymbol {
-  font-size: 24px; /* Tamanho do símbolo */
-  margin-left: 10px; /* Espaço à esquerda do símbolo para separá-lo do input */
-  color: #333; /* Cor do símbolo */
+  font-size: 24px;
+  /* Tamanho do símbolo */
+  margin-left: 10px;
+  /* Espaço à esquerda do símbolo para separá-lo do input */
+  color: #333;
+  /* Cor do símbolo */
 }
 
 .logo {
@@ -17,9 +33,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -28,6 +46,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -45,4 +64,52 @@
 
 .read-the-docs {
   color: #888;
+}
+
+Fragment {
+  color: #333
+}
+
+.inputPrincipal {
+  color: #888
+}
+
+.city {
+  color: #333
+}
+
+.divTempAtual {
+  color: #888
+}
+
+.divDiaAtual {
+  color: #888
+}
+
+.divMin_Max {
+  color: #888
+}
+
+.divPrecipitation {
+  color: #888
+}
+
+.divSunrise {
+  color: #888
+}
+
+.divSunset {
+  color: #888
+}
+
+.divTempHora {
+  color: #888
+}
+
+.divIconeTemp {
+  color: #888
+}
+
+.divDiasDaSemana {
+  color: #888
 }
