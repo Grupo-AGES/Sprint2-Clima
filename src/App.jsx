@@ -1,5 +1,6 @@
-import axios from "axios";
-import "./App.css";
+import axios from 'axios';
+import './App.css';
+import DiaAtual from './Components/DiaAtual';
 import { Fragment, useEffect, useState } from "react";
 import TempAtual from "./Components/TempAtual";
 import Min_Max from "./Components/Min_Max";
@@ -104,6 +105,9 @@ function App() {
         ></input>
         <button onClick={getData}>pesquisar</button>
       </div>
+      <div>
+          <DiaAtual/>
+          </div>
       <div>
         <TempAtual temperature={temperature[0]} />
       </div>
