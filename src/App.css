@@ -8,14 +8,23 @@
   justify-content: center;
 }
 
-.mainSup{
+.body{
+  display:flex;
+  flex-direction: row;
+}
+
+.mainEsq{
   display: flex;
   flex-direction: column;
 }
 
-.mainInf{
+.cloudsIcon{
+  align-self:flex-start;
+}
+
+.infoMomento{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .locationSymbol {
@@ -27,7 +36,7 @@
   /* Cor do símbolo */
 }
 
-.logo {
+//ver.logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
@@ -64,7 +73,7 @@
 
 .read-the-docs {
   color: #888;
-}
+//}
 
 Fragment {
   color: #333
@@ -78,38 +87,62 @@ Fragment {
   color: #333
 }
 
-.divTempAtual {
-  color: #888
+.infoMomentoSL{
+  display: flex;
+  flex-direction: row;
 }
 
-.divDiaAtual {
-  color: #888
+.tempDiaEPrec{
+  display: flex;
+  flex-direction: column;
 }
 
-.divMin_Max {
-  color: #888
+.tempEPrec{
+  display: flex;
+  flex-direction: row;
 }
 
-.divPrecipitation {
-  color: #888
+.tempAtual{
+  color: #333
 }
 
-.divSunrise {
-  color: #888
+.precipitation{
+  color:#333
 }
 
-.divSunset {
-  color: #888
+.diaAtual{
+  color:#333
 }
 
-.divTempHora {
-  color: #888
+.iconeEMin_Max{
+  display:flex;
+  flex-direction:column;
 }
 
-.divIconeTemp {
-  color: #888
+.divIconeTemp{
+  width:70%;
+  height:70%;
 }
 
-.divDiasDaSemana {
-  color: #888
+.min_max{
+  color:#333
 }
+
+.tempHora{
+  display: flex;
+  flex-direction: row;
+}
+
+.divTempHora{
+  color: #333;
+}
+
+.mainDir{
+  display: flex;
+  flex-direction: column;
+}
+
+.divDiasDaSemana{
+  color:#888;
+}  
+
