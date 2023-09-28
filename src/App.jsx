@@ -105,10 +105,15 @@ function App() {
 
   return (
     <Fragment>
-      <div className='mainSup'>
-      <div className="inputPrincipal">
-        <span className="locationSymbol">&#x1F4CD;</span>
-        <input
+      <div className="body">
+      <div className='mainEsq'>
+        <div className="cloudsIcon">
+        <img src=""/>
+        </div>
+        <div className="infoMomento">
+          <div className="inputPrincipal">
+         <span className="locationSymbol">&#x1F4CD;</span>
+         <input
           className="city"
           placeholder="Cidade"
           name="cidade"
@@ -118,35 +123,49 @@ function App() {
           }}
         ></input>
         <button onClick={getData}>pesquisar</button>
+        </div>
+      <div className="infoMomentoSL">
+          <div className="tempDiaEPrec">
+            <div className="tempEPrec">
+              <div className="tempAtual">
+               <TempAtual temperature={temperature[0]} />
+              </div>
+              <div className="precipitation">
+               <Precipitation precipitationSumDay={precipitationSumDay} />
+              </div>
+            </div>
+             <div className="diaAtual">
+              <DiaAtual />
+             </div>
+          </div>
+         <div className='iconeEMin_Max'>
+           <div className='divIconeTemp'>
+            <IconeTemp precipitationSumDay={precipitationSumDay} sunrise={formatter.format(sunriseDate)} sunset={formatter.format(sunsetDate)} />
+           </div>
+           <div className="min_max">
+            <Min_Max min={min} max={max} />
+           </div>
       </div>
-      <div className='divTempAtual'>
-        <TempAtual temperature={temperature[0]} />
-      </div>
-      <div className='divDiaAtual'>
-        <DiaAtual />
-      </div>
-      <div className='divMin_Max'>
-        <Min_Max min={min} max={max} />
-      </div>
-      <div className='divPrecipitation'>
-        <Precipitation precipitationSumDay={precipitationSumDay} />
-      </div>
-      <div className='divSunrise'>
-        <Sunrise sunrise={formatter.format(sunriseDate)} />
-      </div>
-      <div className='divSunset'>
-        <Sunset sunset={formatter.format(sunsetDate)} />
-      </div>
+    </div>
+   </div>
+    <div className="tempHora">
+      //<div className='divSunrise'>//unir componentes sunrise e sunset com tempHora
+       // <Sunrise sunrise={formatter.format(sunriseDate)} />
+      //</div>
+      //<div className='divSunset'>
+        //<Sunset sunset={formatter.format(sunsetDate)} />
+      //</div>
       <div className='divTempHora'>
         <TempHora temperature2={temperature2} />
       </div>
-      <div className='divIconeTemp'>
-        <IconeTemp precipitationSumDay={precipitationSumDay} sunrise={formatter.format(sunriseDate)} sunset={formatter.format(sunsetDate)} />
-      </div>
-      </div>
+    </div>
+  </div>
+  <div className="mainDir">
       <div className='divDiasDaSemana'>
         <DiasDaSemana maxSemana={maxSemana} minSemana={minSemana} precipitationProb={precipitationProb} />
       </div>
+  </div>
+</div>
     </Fragment>
   );
 }
