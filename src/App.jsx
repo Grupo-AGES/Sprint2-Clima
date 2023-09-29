@@ -26,6 +26,8 @@ function App() {
   const [precipitationSumDay, setPrecipitationSumDay] = useState("");
   const [sunriseDate, setSunrise] = useState("");
   const [sunsetDate, setSunset] = useState("");
+  const [sunriseSemana, setSunriseSemana] = useState("");
+  const [sunsetSemana, setSunsetSemana] = useState("");
 
   const options = {
     hour: "numeric",
@@ -63,6 +65,8 @@ function App() {
               const max = response2.data.daily.temperature_2m_max[0];
               const minSemana = response2.data.daily.temperature_2m_min;
               const maxSemana = response2.data.daily.temperature_2m_max;
+              const sunriseSemana = response2.data.daily.sunrise;
+              const sunsetSemana = response2.data.daily.sunset;
               const sunrise = response2.data.daily.sunrise[0];
               const sunset = response2.data.daily.sunset[0];
               const rain = response2.data.hourly.rain[0];
@@ -88,6 +92,8 @@ function App() {
               setPrecipitationSumDay(precipitationSumDay);
               setPrecipitationSum(precipitationSum)
               setPrecipitationProbDay(precipitationProbDay);
+              setSunriseSemana(sunriseSemana);
+              setSunsetSemana(sunsetSemana);
               setSunrise(sunriseDate);
               setSunset(sunsetDate);
             })
@@ -149,12 +155,12 @@ function App() {
     </div>
    </div>
     <div className="tempHora">
-      //<div className='divSunrise'>//unir componentes sunrise e sunset com tempHora
-       // <Sunrise sunrise={formatter.format(sunriseDate)} />
-      //</div>
-      //<div className='divSunset'>
-        //<Sunset sunset={formatter.format(sunsetDate)} />
-      //</div>
+     <div className='divSunrise'>
+       <Sunrise sunrise={formatter.format(sunriseDate)} />
+     </div>
+     <div className='divSunset'>
+       <Sunset sunset={formatter.format(sunsetDate)} />
+     </div>
       <div className='divTempHora'>
         <TempHora temperature2={temperature2} />
       </div>
@@ -162,7 +168,7 @@ function App() {
   </div>
   <div className="mainDir">
       <div className='divDiasDaSemana'>
-        <DiasDaSemana maxSemana={maxSemana} minSemana={minSemana} precipitationProb={precipitationProb} />
+        <DiasDaSemana maxSemana={maxSemana} minSemana={minSemana} precipitationProb={precipitationProb} precipitationSum={precipitationSum} sunriseSemana={sunriseSemana} sunsetSemana={sunsetSemana}/>
       </div>
   </div>
 </div>
