@@ -26,6 +26,7 @@ function App() {
   const [precipitationSumDay, setPrecipitationSumDay] = useState("");
   const [sunriseDate, setSunrise] = useState("");
   const [sunsetDate, setSunset] = useState("");
+  const [tempHoraAtual, setTempHoraAtual] = useState("");
 
   const options = {
     hour: "numeric",
@@ -35,6 +36,10 @@ function App() {
   };
 
   const formatter = new Intl.DateTimeFormat("pt-BR", options);
+
+  const hoje = new Date;
+  const time = hoje.getHours(); //pega a hora e minuto do momento
+
 
   async function getData() {
     if (inputValue) {
@@ -90,6 +95,7 @@ function App() {
               setPrecipitationProbDay(precipitationProbDay);
               setSunrise(sunriseDate);
               setSunset(sunsetDate);
+              setTempHoraAtual(temperature2[time]);
             })
             .catch((error) => {
               console.error("Erro ao buscar dados da API:", error);
@@ -108,7 +114,7 @@ function App() {
       <div className="body">
       <div className='mainEsq'>
         <div className="cloudsIcon">
-        <img src=""/>
+          <img className="imageLogo"src="/images/logo.png"/>
         </div>
         <div className="infoMomento">
           <div className="inputPrincipal">
@@ -127,16 +133,16 @@ function App() {
       <div className="infoMomentoSL">
           <div className="tempDiaEPrec">
             <div className="tempEPrec">
+            <div className="diaAtual">
+              <DiaAtual />
+             </div>
               <div className="tempAtual">
-               <TempAtual temperature={temperature[0]} />
+               <TempAtual temperature={tempHoraAtual}/>
               </div>
               <div className="precipitation">
                <Precipitation precipitationSumDay={precipitationSumDay} />
               </div>
             </div>
-             <div className="diaAtual">
-              <DiaAtual />
-             </div>
           </div>
          <div className='iconeEMin_Max'>
            <div className='divIconeTemp'>
@@ -149,12 +155,12 @@ function App() {
     </div>
    </div>
     <div className="tempHora">
-      //<div className='divSunrise'>//unir componentes sunrise e sunset com tempHora
-       // <Sunrise sunrise={formatter.format(sunriseDate)} />
-      //</div>
-      //<div className='divSunset'>
-        //<Sunset sunset={formatter.format(sunsetDate)} />
-      //</div>
+      <div className='divSunrise'>
+       <Sunrise sunrise={formatter.format(sunriseDate)} />
+      </div>
+      <div className='divSunset'>
+        <Sunset sunset={formatter.format(sunsetDate)} />
+      </div>
       <div className='divTempHora'>
         <TempHora temperature2={temperature2} />
       </div>
@@ -171,4 +177,3 @@ function App() {
 }
 
 export default App;
-  

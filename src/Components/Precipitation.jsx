@@ -1,5 +1,5 @@
 import React from 'react'
-import './Precipitation.css'
+
 
 const Preciptation = (props) => {
   console.log("propsPre",props.precipitationSumDay)

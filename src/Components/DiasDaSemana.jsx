@@ -1,6 +1,5 @@
-import './DiasDaSemana.css';
+
 import React, { Fragment } from "react";
-import IconeTemp from './IconeTemp';
 
 function DiasDaSemana(props) {
   const { maxSemana, minSemana } = props;
@@ -17,13 +16,13 @@ function DiasDaSemana(props) {
   
   return (
     <Fragment>
-      <div className='bodyDiasDaSemana'>
+      <div>
         {Array.isArray(diasDaSemana) && Array.isArray(minSemana) && Array.isArray(maxSemana) ? (
           diasDaSemana.map((dia, index) => (
-            <div className='divDiasDaSemana' key={index}>
-              <p className='pDiaDaSemana'>{dia}</p>
-              <div className='divTempMinSemana'>{minSemana[index]}°</div>
-              <div className='divTempMaxSemana'>{maxSemana[index]}°</div>
+            <div key={index}>
+              <p>{dia}</p>
+              <div>{minSemana[index]}°</div>
+              <div>{maxSemana[index]}°</div>
             </div>
           ))
         ) : (

@@ -1,32 +1,26 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.body{
-  display:flex;
-  flex-direction: row;
-}
-
-.mainEsq{
-  display: flex;
-  flex-direction: column;
-}
-
+/* Icone Logo */
 .cloudsIcon{
-  align-self:flex-start;
-}
-
-.infoMomento{
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content:flex-start;
+  width: 100px;
+  height: 100px;
 }
 
+.imageLogo{
+  display: flex;
+  justify-content: left;
+  width: 240px;
+  height: fit-content;
+}
+
+/* Icone temp atual */
+.divIconeTemp{
+  width:40%;
+  height:40%;
+}
+
+/* Icone Local */
 .locationSymbol {
   font-size: 24px;
   /* Tamanho do símbolo */
@@ -36,73 +30,60 @@
   /* Cor do símbolo */
 }
 
-Fragment {
-  color: #333
-}
-
+/* Input principal */
 .inputPrincipal {
-  color: #888
-}
-
-.city {
-  color: #333
-}
-
-.infoMomentoSL{
   display: flex;
-  flex-direction: row;
+  color: white;
 }
 
-.tempDiaEPrec{
+.body{
+  display: flex;
+}
+
+/* Mains */
+.mainEsq{
   display: flex;
   flex-direction: column;
-}
-
-.tempEPrec{
-  display: flex;
-  flex-direction: row;
-}
-
-.tempAtual{
-  color: #333
-}
-
-.precipitation{
-  color:#333
-}
-
-.diaAtual{
-  color:#333
-}
-
-.iconeEMin_Max{
-  display:flex;
-  flex-direction:column;
-}
-
-.divIconeTemp{
-  width:70%;
-  height:70%;
-}
-
-.min_max{
-  color:#333
-}
-
-.tempHora{
-  display: flex;
-  flex-direction: row;
-}
-
-.divTempHora{
-  color: #333;
+  width: 70%;
 }
 
 .mainDir{
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
+  color: white;
+  width: 30%;
 }
 
+/* Dias da Semana */
 .divDiasDaSemana{
-  color:#888;
-}  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border:2px solid #333;
+  color: white;
+  background-color: green;
+  height: fit-content;
+}
+
+/* temperatura por hora */
+.divTempHora {
+  display: flex;
+  flex-direction: row; /* Certifique-se de que a direção seja "row" para distribuição horizontal */
+  border: 2px solid #333;
+  color: white; 
+  background-color: green;
+}
+
+.infoMomentoSL{
+  display: flex;
+  justify-content: center;
+  border: 2px solid #333;
+  width: 80vh;
+}
+
+.min_max{
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  width: 100%;
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import './Sunset.css';
+
 
 const Sunset = (props) => {
   return (

@@ -1,12 +1,10 @@
 import React from 'react'
-import './TempAtual.css'
 
 const TempAtual = (props) => {
 
     return (
         <div>
-            <p>Temperatura Atual</p>
-            {props.temperature}
+            {props.temperature} 
             {<span>°</span>}
         </div>
     )
