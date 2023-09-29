@@ -5,18 +5,25 @@ import { Fragment, useEffect, useState } from "react";
 import TempAtual from "./Components/TempAtual";
 import Min_Max from "./Components/Min_Max";
 import TempHora from "./Components/TempHora";
-import Preciptation from "./Components/Preciptation";
+import Precipitation from "./Components/Precipitation";
 import Sunset from "./Components/Sunset";
 import Sunrise from "./Components/Sunrise";
+import DiasDaSemana from "./Components/DiasDaSemana";
+import IconeTemp from "./Components/IconeTemp";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
   const [dadosApi, setDadosApi] = useState({});
+  const [maxSemana, setMaxSemana] = useState("");
+  const [minSemana, setMinSemana] = useState("");
+  const [precipitationProb, setPrecipitationProb] = useState("");
+  const [precipitationProbDay, setPrecipitationProbDay] = useState("");
   const [temperature, setTemperature] = useState("");
   const [temperature2, setTemperature2] = useState([]);
   const [min, setMin] = useState("");
   const [max, setMax] = useState("");
-  const [precipitation, setPreciptation] = useState("");
+  const [precipitationSum, setPrecipitationSum] = useState("");
+  const [precipitationSumDay, setPrecipitationSumDay] = useState("");
   const [sunriseDate, setSunrise] = useState("");
   const [sunsetDate, setSunset] = useState("");
 
@@ -31,6 +38,7 @@ function App() {
 
   async function getData() {
     if (inputValue) {
+      console.log("funciona o getdata");
       const urlApi1 = `https://api.geoapify.com/v1/geocode/autocomplete?text=${inputValue}&format=json&apiKey=e72a5844973a4abba1de87bfac36415f`;
       axios
         .get(urlApi1)
@@ -38,8 +46,8 @@ function App() {
           console.log("response1", response1.data);
           const latitude = response1.data.results[0].lat;
           const longitude = response1.data.results[0].lon;
-          const urlApi2 = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,apparent_temperature,precipitation_probability,rain,cloudcover,windspeed_10m&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,rain_sum&timezone=auto `;
-          console.log("response1", response1);
+          const urlApi2 = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,apparent_temperature,rain,cloudcover&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,rain_sum,precipitation_sum,precipitation_probability_min&timezone=auto`;
+          console.log("response1", response1); 
           axios
             .get(urlApi2)
             .then((response2) => {
@@ -53,28 +61,33 @@ function App() {
               );
               const min = response2.data.daily.temperature_2m_min[0];
               const max = response2.data.daily.temperature_2m_max[0];
+              const minSemana = response2.data.daily.temperature_2m_min;
+              const maxSemana = response2.data.daily.temperature_2m_max;
               const sunrise = response2.data.daily.sunrise[0];
               const sunset = response2.data.daily.sunset[0];
               const rain = response2.data.hourly.rain[0];
-              const precipitation =
-                response2.data.hourly.precipitation_probability[0];
-              const wind = response2.data.hourly.windspeed_10m[0];
-              const tempAparente =
-                response2.data.hourly.apparent_temperature[0];
-              const maxDaily = response2.data.daily.temperature_2m_max;
-              const minDaily = response2.data.daily.temperature_2m_min;
               const rainDaily = response2.data.daily.rain_sum[0];
+              const tempAparente = response2.data.hourly.apparent_temperature[0];
               const cloudcover = response2.data.hourly.cloudcover[0];
+              const precipitationSumDay = response2.data.daily.precipitation_sum[0];
+              const precipitationSum = response2.data.daily.precipitation_sum;
+              const precipitationProb = response2.data.daily.precipitation_probability_min;
+              const precipitationProbDay = response2.data.daily.precipitation_probability_min[0];
+              console.log(precipitationProb)
 
               const sunriseDate = new Date(sunrise);
               const sunsetDate = new Date(sunset);
 
               setDadosApi(data);
+              setMinSemana(minSemana);
+              setMaxSemana(maxSemana);
               setTemperature(temperature);
               setTemperature2(temperature2);
               setMin(min);
               setMax(max);
-              setPreciptation(precipitation);
+              setPrecipitationSumDay(precipitationSumDay);
+              setPrecipitationSum(precipitationSum)
+              setPrecipitationProbDay(precipitationProbDay);
               setSunrise(sunriseDate);
               setSunset(sunsetDate);
             })
@@ -92,9 +105,15 @@ function App() {
 
   return (
     <Fragment>
-      <div className="inputPrincipal">
-        <span className="locationSymbol">&#x1F4CD;</span>
-        <input
+      <div className="body">
+      <div className='mainEsq'>
+        <div className="cloudsIcon">
+        <img src=""/>
+        </div>
+        <div className="infoMomento">
+          <div className="inputPrincipal">
+         <span className="locationSymbol">&#x1F4CD;</span>
+         <input
           className="city"
           placeholder="Cidade"
           name="cidade"
@@ -104,28 +123,49 @@ function App() {
           }}
         ></input>
         <button onClick={getData}>pesquisar</button>
-      </div>
-      <div>
-          <DiaAtual/>
+        </div>
+      <div className="infoMomentoSL">
+          <div className="tempDiaEPrec">
+            <div className="tempEPrec">
+              <div className="tempAtual">
+               <TempAtual temperature={temperature[0]} />
+              </div>
+              <div className="precipitation">
+               <Precipitation precipitationSumDay={precipitationSumDay} />
+              </div>
+            </div>
+             <div className="diaAtual">
+              <DiaAtual />
+             </div>
           </div>
-      <div>
-        <TempAtual temperature={temperature[0]} />
+         <div className='iconeEMin_Max'>
+           <div className='divIconeTemp'>
+            <IconeTemp precipitationSumDay={precipitationSumDay} sunrise={formatter.format(sunriseDate)} sunset={formatter.format(sunsetDate)} />
+           </div>
+           <div className="min_max">
+            <Min_Max min={min} max={max} />
+           </div>
       </div>
-      <div>
-        <Min_Max min={min} max={max} />
-      </div>
-      <div>
+    </div>
+   </div>
+    <div className="tempHora">
+      //<div className='divSunrise'>//unir componentes sunrise e sunset com tempHora
+       // <Sunrise sunrise={formatter.format(sunriseDate)} />
+      //</div>
+      //<div className='divSunset'>
+        //<Sunset sunset={formatter.format(sunsetDate)} />
+      //</div>
+      <div className='divTempHora'>
         <TempHora temperature2={temperature2} />
       </div>
-      <div>
-        <Preciptation precipitation={precipitation} />
+    </div>
+  </div>
+  <div className="mainDir">
+      <div className='divDiasDaSemana'>
+        <DiasDaSemana maxSemana={maxSemana} minSemana={minSemana} precipitationProb={precipitationProb} />
       </div>
-      <div>
-        <Sunrise sunrise={formatter.format(sunriseDate)} />
-      </div>
-      <div>
-        <Sunset sunset={formatter.format(sunsetDate)} />
-      </div>
+  </div>
+</div>
     </Fragment>
   );
 }

@@ -12,6 +12,7 @@
   "dependencies": {
     "@googlemaps/react-wrapper": "^1.1.35",
     "axios": "^1.5.0",
+    "lottie-react": "^2.4.0",
     "date-fns": "^2.30.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
@@ -20,7 +21,7 @@
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react": "^4.0.3",
-    "eslint": "^8.45.0",
+    "@esbuild/win32-x64": "0.18.20",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",

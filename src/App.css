@@ -3,26 +3,106 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.body{
+  display:flex;
+  flex-direction: row;
+}
+
+.mainEsq{
+  display: flex;
+  flex-direction: column;
+}
+
+.cloudsIcon{
+  align-self:flex-start;
+}
+
+.infoMomento{
+  display: flex;
+  flex-direction: column;
 }
 
 .locationSymbol {
-  font-size: 24px; /* Tamanho do símbolo */
-  margin-left: 10px; /* Espaço à esquerda do símbolo para separá-lo do input */
-  color: #333; /* Cor do símbolo */
+  font-size: 24px;
+  /* Tamanho do símbolo */
+  margin-left: 10px;
+  /* Espaço à esquerda do símbolo para separá-lo do input */
+  color: #333;
+  /* Cor do símbolo */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+Fragment {
+  color: #333
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.inputPrincipal {
+  color: #888
 }
 
+.city {
+  color: #333
+}
+
+.infoMomentoSL{
+  display: flex;
+  flex-direction: row;
+}
+
+.tempDiaEPrec{
+  display: flex;
+  flex-direction: column;
+}
+
+.tempEPrec{
+  display: flex;
+  flex-direction: row;
+}
+
+.tempAtual{
+  color: #333
+}
+
+.precipitation{
+  color:#333
+}
+
+.diaAtual{
+  color:#333
+}
+
+.iconeEMin_Max{
+  display:flex;
+  flex-direction:column;
+}
+
+.divIconeTemp{
+  width:70%;
+  height:70%;
+}
+
+.min_max{
+  color:#333
+}
+
+.tempHora{
+  display: flex;
+  flex-direction: row;
+}
+
+.divTempHora{
+  color: #333;
+}
+
+.mainDir{
+  display: flex;
+  flex-direction: column;
+}
+
+.divDiasDaSemana{
+  color:#888;
+}  

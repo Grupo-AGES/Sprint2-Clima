@@ -1,0 +1,26 @@
+.bodyDiasDaSemana{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+}
+
+.divDiasDaSemana{
+width: 90%;
+    height: 30%;
+}
+
+.pDiaDaSemana{
+    color: aliceblue;
+}
+
+.divTempMinSemana{
+    width: 90%;
+    height: 30%;
+    color: aliceblue;
+}
+
+.divTempMaxSemana{
+    width: 90%;
+    height: 30%;
+    color: aliceblue;
+}
