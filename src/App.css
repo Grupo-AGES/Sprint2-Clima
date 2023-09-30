@@ -16,7 +16,8 @@
 
 /* Icone temp atual */
 .divIconeTemp{
-  width:40%;
+
+  width:60%;
   height:40%;
 }
 
@@ -42,6 +43,10 @@
 }
 
 .icon_min_max{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .body{
@@ -111,11 +116,17 @@
   display: flex;
   flex-direction: row;
   font-size: 21px;
-  margin-left: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .componenteInternoTempHora{
-  margin: 3px;
+  margin: 4px;
+  margin-top: 3px;
+}
+
+.diaTempHora{
+  font-size: 20px;
 }
 
 .infoMomentoSL{
@@ -135,6 +146,8 @@
 
 .min_max{
   display: flex;
+  justify-content: center;
+  margin: 15px;
 }
 
 .componenteMinMax{

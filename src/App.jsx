@@ -177,6 +177,9 @@ function App() {
               </div>
             </div>
           </div>
+          <div className="diaTempHora">
+            <p>Hoje</p>
+          </div>
           <div className="tempHora">
             <TempHora temperature2={temperature2} />
           </div>
