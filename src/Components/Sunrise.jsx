@@ -4,7 +4,7 @@ import React from 'react';
 
 const Sunrise = (props) => {
   return (
-    <div>
+    <div className='componenteSunrise'>
         <p>Nascer do sol</p>
         {props.sunrise}
     </div>

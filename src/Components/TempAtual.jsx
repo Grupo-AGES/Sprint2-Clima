@@ -3,7 +3,7 @@ import React from 'react'
 const TempAtual = (props) => {
 
     return (
-        <div>
+        <div className='componenteTempAtual'>
             {props.temperature} 
             {<span>°</span>}
         </div>
