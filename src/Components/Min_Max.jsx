@@ -8,9 +8,10 @@ function Min_Max(props) {
           <p>Min</p>
           {props.min}
           {<span>°</span>}
+          -
         </div>
         <div className="componenteMax">
-          <p>Max</p>
+          <p>Max</p> 
           {props.max}
           {<span>°</span>}
         </div>
