@@ -1,7 +1,6 @@
 import React from 'react'
 
 const Preciptation = (props) => {
-  console.log("propsPre",props.precipitationSumDay)
   if(props.precipitationSumDay<5){
     return (
       <div className='componentPreciptation'>

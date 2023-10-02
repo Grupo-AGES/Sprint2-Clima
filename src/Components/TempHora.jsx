@@ -7,9 +7,6 @@ const TempHora = (props) => {
   const currentMinute = new Date().getTime()
   const next12Hours = [];
 
-  console.log("hora", currentHour)
-  console.log("comp", currentMinute)
-
   for (let i = currentHour; i < currentHour + 20; i++) {
     const hour = i % 24; // Garante que não exceda 24 horas
     next12Hours.push(hour);
