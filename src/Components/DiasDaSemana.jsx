@@ -69,8 +69,8 @@ function DiasDaSemana(props) {
 
             return (
               <div className="divDiasDaSemana" key={index}>
-                <p className="pDiaDaSemana">{dia}</p>
-                {icone}
+                <div className="headerSemana">{icone}
+                  <h6 className="pDiaDaSemana">{dia}</h6></div>
                 <div className="componenteMinMaxSemana">
                   <div className="divTempMinSemana">{minSemana[index]}°</div>-
                   <div className="divTempMaxSemana">{maxSemana[index]}°</div>

@@ -1,16 +1,37 @@
-import React from 'react'
-
+import React from 'react';
+import Sunrise from './Sunrise';
+import Sunset from './Sunset';
 
 const TempHora = (props) => {
+  const currentHour = new Date().getHours()+1;
+  const currentMinute = new Date().getTime()
+  const next12Hours = [];
+
+  console.log("hora", currentHour)
+  console.log("comp", currentMinute)
+
+  for (let i = currentHour; i < currentHour + 20; i++) {
+    const hour = i % 24; // Garante que não exceda 24 horas
+    next12Hours.push(hour);
+  }
+
   return (
-    <div className='componenteTempHora'>
-      {props.temperature2.map((temp, index) => (
-        <div className="componenteInternoTempHora" key={index}>
-          <span>{index}:00</span><br/> {temp}°
-        </div>
-      ))}
+    <div className='tempHora'>
+      <div className='componenteTempHora' style={{ display: 'flex' }}>
+        {next12Hours.map((hour, index) => (
+          <div className="componenteInternoTempHora" key={index}>
+            <span>{hour}:00</span><br/> {props.temperature2[hour]}°
+          </div>
+        ))}
+      </div>
+      {currentHour <= 12 && props.sunrise && (
+        <Sunrise sunrise={props.sunrise} />
+      )}
+      {currentHour >= 12 && props.sunset && (
+        <Sunset sunset={props.sunset} />
+      )}
     </div>
-  )
+  );
 }
 
-export default TempHora
+export default TempHora;

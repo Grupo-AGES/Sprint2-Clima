@@ -17,17 +17,17 @@ function IconeTemp(props) {
   const horaSunset = sunset.split(':')[0]
 
   if (precipitationSumDay >= 5 && hours >= horaSunset && hours > horaSunrise) {
-    return (<div><Lottie animationData={noiteChuva} /></div>)
+    return (<Lottie className='divIconeTemp' animationData={noiteChuva} />)
   } else if (precipitationSumDay < 5 && precipitationSumDay > 3 && hours >= horaSunset && hours > horaSunrise) {
-    return (<div><Lottie animationData={noiteNum} /></div>)
+    return (<Lottie className='divIconeTemp' animationData={noiteNum} />)
   } else if (precipitationSumDay <= 3 && hours >= horaSunset && hours > horaSunrise) {
-    return (<div><Lottie animationData={noiteBoa} /></div>)
+    return (<Lottie className='divIconeTemp' animationData={noiteBoa} />)
   } else if (precipitationSumDay >= 5 && hours < horaSunset && hours >= horaSunrise) {
-    return (<div><Lottie animationData={diaChuva} /></div>)
+    return (<Lottie className='divIconeTemp' animationData={diaChuva} />)
   } else if (precipitationSumDay < 5 && precipitationSumDay > 3 && hours < horaSunset && hours >= horaSunrise) {
-    return (<div><Lottie animationData={diaNum} /></div>)
+    return (<Lottie className='divIconeTemp' animationData={diaNum} />)
   } else {
-    return (<div><Lottie animationData={diaBom} /></div>)
+    return (<Lottie className='divIconeTemp' animationData={diaBom} />)
   }
 }
 

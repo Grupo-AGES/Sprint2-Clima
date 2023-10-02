@@ -10,9 +10,10 @@ import Sunset from "./Components/Sunset";
 import Sunrise from "./Components/Sunrise";
 import DiasDaSemana from "./Components/DiasDaSemana";
 import IconeTemp from "./Components/IconeTemp";
+import Background from "./Components/Background";
 
 function App() {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState("Porto Alegre");
   const [dadosApi, setDadosApi] = useState({});
   const [maxSemana, setMaxSemana] = useState("");
   const [minSemana, setMinSemana] = useState("");
@@ -33,14 +34,15 @@ function App() {
   const options = {
     hour: "numeric",
     minute: "numeric",
-    second: "numeric",
     hour12: false,
   };
 
   const formatter = new Intl.DateTimeFormat("pt-BR", options);
 
   const hoje = new Date();
-  const time = hoje.getHours(); //pega a hora e minuto do momento
+  const hours = hoje.getHours().toString().padStart(2, '0');
+  const minutes = hoje.getMinutes().toString().padStart(2, '0');
+  const time = `${hours}:${minutes}`;
 
   async function getData() {
     if (inputValue) {
@@ -85,7 +87,6 @@ function App() {
                 response2.data.daily.precipitation_probability_min;
               const precipitationProbDay =
                 response2.data.daily.precipitation_probability_min[0];
-              console.log(precipitationProb);
 
               const sunriseDate = new Date(sunrise);
               const sunsetDate = new Date(sunset);
@@ -104,7 +105,7 @@ function App() {
               setSunsetSemana(sunsetSemana);
               setSunrise(sunriseDate);
               setSunset(sunsetDate);
-              setTempHoraAtual(temperature2[time]);
+              setTempHoraAtual(temperature2[hours]);
             })
             .catch((error) => {
               console.error("Erro ao buscar dados da API:", error);
@@ -120,72 +121,66 @@ function App() {
 
   return (
     <Fragment>
+        <Background className='background' precipitationSumDay={precipitationSumDay}
+          sunrise={formatter.format(sunriseDate)}
+          sunset={formatter.format(sunsetDate)} />
       <div className="body">
         <div className="mainEsq">
           <div className="cloudsIcon">
             <img className="imageLogo" src="/images/logo.png" />
           </div>
+          <div className="inputPrincipal">
+            <input
+              className="city"
+              placeholder=" &#x1F4CD; Cidade"
+              name="cidade"
+              value={inputValue}
+              onChange={(e) => {
+                setInputValue(e.target.value);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  getData();
+                }
+              }}
+            ></input>
+            
+          </div>
           <div className="infoMomento">
-            <div className="inputPrincipal">
-              <span className="locationSymbol">&#x1F4CD;</span>
-              <input
-                className="city"
-                placeholder="Cidade"
-                name="cidade"
-                value={inputValue}
-                onChange={(e) => {
-                  setInputValue(e.target.value);
-                }}
-              ></input>
-              <button onClick={getData}>pesquisar</button>
-            </div>
             <div className="infoMomentoSL">
               <div className="tempDiaEPrec">
                 <div className="tempEPrec">
-                  <div className="diaAtual">
-                    <DiaAtual />
-                  </div>
                   <div className="tempAtual">
                     <TempAtual temperature={tempHoraAtual} />
                   </div>
-                  <div className="precipitation">
-                    <Precipitation precipitationSumDay={precipitationSumDay} />
+                  <div className="diaAtual">
+                    <DiaAtual />
                   </div>
                 </div>
               </div>
-              <div className="icon_min_max_sunrise_sunset">
                 <div className="icon_min_max">
-                  <div className="divIconeTemp">
                     <IconeTemp
                       precipitationSumDay={precipitationSumDay}
                       sunrise={formatter.format(sunriseDate)}
                       sunset={formatter.format(sunsetDate)}
                     />
-                  </div>
-                  <div className="min_max">
                     <Min_Max min={min} max={max} />
-                  </div>
-                </div>
-                <div className="sunriseSunset">
-                  <div className="divSunrise">
-                    <Sunrise sunrise={formatter.format(sunriseDate)} />
-                  </div>
-                  <div className="divSunset">
-                    <Sunset sunset={formatter.format(sunsetDate)} />
-                  </div>
-                </div>
+              <Precipitation precipitationSumDay={precipitationSumDay} />
               </div>
             </div>
           </div>
-          <div className="diaTempHora">
-            <p>Hoje</p>
-          </div>
-          <div className="tempHora">
+          <h6 className="diaTempHora">Hoje</h6>
             <TempHora temperature2={temperature2} />
           </div>
-        </div>
-        <div className="mainDir">
-          <div className="divDiasDaSemana">
+          {/* <div className="sunriseSunset"> */}
+            {/* <div className="divSunrise">
+              <Sunrise sunrise={formatter.format(sunriseDate)} />
+            </div>
+            <div className="divSunset">
+              <Sunset sunset={formatter.format(sunsetDate)} />
+            </div> */}
+          {/* </div> */}
+      <div className="mainDir">
             <DiasDaSemana
               maxSemana={maxSemana}
               minSemana={minSemana}
@@ -194,7 +189,6 @@ function App() {
               sunriseSemana={sunriseSemana}
               sunsetSemana={sunsetSemana}
             />
-          </div>
         </div>
       </div>
     </Fragment>

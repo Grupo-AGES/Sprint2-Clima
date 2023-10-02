@@ -1,103 +1,131 @@
+.city {
+  background-color: rgba(250, 235, 215, 0.055);
+  border: none;
+  font-size: 5.5vh;
+  margin-bottom: 3px;
+}
+
+.diaAtual {
+  font-size: 5vh;
+}
+
+.background {
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+.background img {
+  position: absolute;
+  z-index: -1;
+}
+
 /* Icone Logo */
-.cloudsIcon{
+.cloudsIcon {
   display: flex;
   align-items: center;
-  justify-content:flex-start;
+  justify-content: flex-start;
   width: 100px;
   height: 100px;
 }
 
-.imageLogo{
+.imageLogo {
   display: flex;
   justify-content: left;
-  width: 240px;
+  width: 20vh;
   height: fit-content;
 }
 
+
 /* Icone temp atual */
-.divIconeTemp{
-
-  width:60%;
-  height:40%;
-}
-
-/* Icone Local */
-.locationSymbol {
-  font-size: 24px;
-  /* Tamanho do símbolo */
-  margin-left: 10px;
-  /* Espaço à esquerda do símbolo para separá-lo do input */
-  color: #333;
-  /* Cor do símbolo */
+.divIconeTemp {
+  width: 100%;
+  height: 12vh;
 }
 
 /* Input principal */
 .inputPrincipal {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   color: white;
+  margin-top: 5vh;
+  margin-left: 5vw;
 }
 
-.icon_min_max_sunrise_sunset{
+._max_sunrise_sunset {
   display: flex;
 }
 
-.icon_min_max{
+.icon_min_max {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  width: 9vw;
+  height: fit-content;
 }
 
-.body{
+.body {
   display: flex;
+  flex-direction: row;
+  padding: 20px;
 }
 
 /* Mains */
-.mainEsq{
+.mainEsq {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 70vw;
+  height: 100vh;
+  justify-content: space-between;
+  margin-right: 3vh;
 }
 
-.mainDir{
+.mainDir {
   display: flex;
   flex-direction: row-reverse;
   color: white;
-  width: 30%;
+  width: 30vw;
+  height: 90vh;
 }
 
 /* Dias da Semana */
 
-.divDiasDaSemana{
+.divDiasDaSemana {
   display: flex;
   flex-direction: column;
   border-radius: 20px;
   color: white;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(100, 100, 100, 1));
+  background: linear-gradient(to bottom, rgba(241, 241, 243, 0), rgba(203, 227, 247, 0.603));
   position: relative;
-  height: 16vh;
+  margin-bottom: 2vh;
   margin-right: 5px;
 }
 
-.pDiaDaSemana{
-  font-size: 17px;
-  display:flex;
+.headerSemana {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
-.componenteMinMaxSemana{
+.pDiaDaSemana {
+  font-size: 17px;
+  display: flex;
+  margin: 0;
+}
+
+.componenteMinMaxSemana {
   font-size: 17px;
   display: flex;
   justify-content: center;
   margin: 3px;
 }
 
-.animationIconSemana{
+.animationIconSemana {
   width: 20%;
   height: auto;
   display: flex;
   justify-content: center;
-  position: absolute;
   top: 0;
   right: 0;
 }
@@ -105,14 +133,14 @@
 /* temperatura por hora */
 .tempHora {
   display: flex;
-  border: 2px solid #333;
-  color: white; 
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(100, 100, 100, 1));
-  width: fit-content; 
-  border-radius: 20px;
+  color: white;
+  background: linear-gradient(to bottom, rgba(241, 241, 243, 0), rgba(203, 227, 247, 0.603));
+  border-radius: 16px;
+  width: fit-content;
+  justify-content: space-around;
 }
 
-.componenteTempHora{
+.componenteTempHora {
   display: flex;
   flex-direction: row;
   font-size: 21px;
@@ -120,84 +148,111 @@
   margin-right: 20px;
 }
 
-.componenteInternoTempHora{
+.componenteInternoTempHora {
   margin: 4px;
   margin-top: 3px;
+  font-size: 2.5vh;
 }
 
-.diaTempHora{
+.diaTempHora {
   font-size: 20px;
+  margin: 0;
 }
 
-.infoMomentoSL{
+.infoMomentoSL {
   display: flex;
-  justify-content: center;
-  border: 2px solid #333;
-  width: 80vh;
+  justify-content: space-between;
+  width: 60vh;
 }
 
-.infoMomento{
+.infoMomento {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 50px; 
-
+  margin: 50px;
+  margin-top: 12vh;
 }
 
-.min_max{
+.min_max {
   display: flex;
   justify-content: center;
   margin: 15px;
 }
 
-.componenteMinMax{
+.componenteMinMax {
   display: flex;
   margin-left: 3px;
+  justify-content: center;
 }
 
-.componenteMin{
+.componenteMin {
+  margin-right: 3px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.componenteMin p {
   margin-right: 3px;
 }
 
-.componenteTempAtual{
-  font-size: 10vh;
-  margin: 30px;
+.componenteMax {
+  margin-right: 3px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.precipitation{
+.componenteMax p {
+  margin-right: 3px;
+}
+
+.componenteTempAtual {
+  font-size: 11vh;
+}
+
+.precipitation {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.componentPreciptation{
+.componentPreciptation {
+  width: max-content;
+}
+
+.componentPreciptation p {
+  margin: 0;
+}
+
+.mainSup {
   display: flex;
+}
+
+.mainInf {
+  width: 100%;
+  margin-top: 2vh;
+}
+
+.sunriseSunset {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
+}
+
+.componenteSunrise {
+  display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   margin: 10px;
 }
 
-.sunriseSunset{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.componenteSunrise{
+.componenteSunset {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   margin: 10px;
 }
-
-.componenteSunset{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin: 10px;
-}
-
