@@ -21,6 +21,7 @@ function App() {
   const [precipitationProbDay, setPrecipitationProbDay] = useState("");
   const [temperature, setTemperature] = useState("");
   const [temperature2, setTemperature2] = useState([]);
+  const [cloudcover, setCloudcover] = useState("");
   const [min, setMin] = useState("");
   const [max, setMax] = useState("");
   const [precipitationSum, setPrecipitationSum] = useState("");
@@ -54,8 +55,7 @@ function App() {
           console.log("response1", response1.data);
           const latitude = response1.data.results[0].lat;
           const longitude = response1.data.results[0].lon;
-          const urlApi2 = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,apparent_temperature,rain,cloudcover&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,rain_sum,precipitation_sum,precipitation_probability_min&timezone=auto`;
-          console.log("response1", response1);
+          const urlApi2 = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,apparent_temperature,rain,cloudcover&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,rain_sum,precipitation_sum,precipitation_probability_min&timezone=auto`
           axios
             .get(urlApi2)
             .then((response2) => {
@@ -69,8 +69,14 @@ function App() {
               );
               const min = response2.data.daily.temperature_2m_min[0];
               const max = response2.data.daily.temperature_2m_max[0];
-              const minSemana = response2.data.daily.temperature_2m_min;
-              const maxSemana = response2.data.daily.temperature_2m_max;
+              const minSemana = response2.data.daily.temperature_2m_min.slice(
+                1,
+                7
+              );
+              const maxSemana = response2.data.daily.temperature_2m_max.slice(
+                1,
+                7
+              );
               const sunriseSemana = response2.data.daily.sunrise;
               const sunsetSemana = response2.data.daily.sunset;
               const sunrise = response2.data.daily.sunrise[0];
@@ -79,19 +85,23 @@ function App() {
               const rainDaily = response2.data.daily.rain_sum[0];
               const tempAparente =
                 response2.data.hourly.apparent_temperature[0];
-              const cloudcover = response2.data.hourly.cloudcover[0];
+              const cloudcover = response2.data.hourly.cloudcover;
               const precipitationSumDay =
                 response2.data.daily.precipitation_sum[0];
-              const precipitationSum = response2.data.daily.precipitation_sum;
+              const precipitationSum = response2.data.daily.precipitation_sum.slice(
+                1,
+                7
+              );
               const precipitationProb =
                 response2.data.daily.precipitation_probability_min;
               const precipitationProbDay =
                 response2.data.daily.precipitation_probability_min[0];
-
+console.log("cloud", cloudcover)
               const sunriseDate = new Date(sunrise);
               const sunsetDate = new Date(sunset);
 
               setDadosApi(data);
+              setCloudcover(cloudcover)
               setMinSemana(minSemana);
               setMaxSemana(maxSemana);
               setTemperature(temperature);
@@ -123,7 +133,8 @@ function App() {
     <Fragment>
         <Background className='background' precipitationSumDay={precipitationSumDay}
           sunrise={formatter.format(sunriseDate)}
-          sunset={formatter.format(sunsetDate)} />
+          sunset={formatter.format(sunsetDate)}
+          cloudcover={cloudcover} />
       <div className="body">
         <div className="mainEsq">
           <div className="cloudsIcon">
@@ -161,6 +172,7 @@ function App() {
                 <div className="icon_min_max">
                     <IconeTemp
                       precipitationSumDay={precipitationSumDay}
+                      cloudcover={cloudcover}
                       sunrise={formatter.format(sunriseDate)}
                       sunset={formatter.format(sunsetDate)}
                     />
@@ -184,6 +196,7 @@ function App() {
             <DiasDaSemana
               maxSemana={maxSemana}
               minSemana={minSemana}
+              cloudcover={cloudcover}
               precipitationProb={precipitationProb}
               precipitationSum={precipitationSum}
               sunriseSemana={sunriseSemana}

@@ -6,28 +6,29 @@ import diaNum from '../assets/Backgrounds/DiaNub.png'
 import diaBom from '../assets/Backgrounds/DiaSol.png'
 
 function Background(props) {
-  const { precipitationSumDay, sunset, sunrise } = props
+  const { precipitationSumDay, sunset, sunrise, cloudcover } = props
   const hoje = new Date()
   const hours = hoje.getHours().toString().padStart(2, '0')
   // const minutes = hoje.getMinutes().toString().padStart(2, '0')
   // const time = `${hours}:${minutes}`
   const horaSunrise = sunrise.split(':')[0]
   const horaSunset = sunset.split(':')[0]
+  const cloudcoverHour = cloudcover[hours]
 
-  if (precipitationSumDay >= 5 && hours >= horaSunset && hours > horaSunrise) {
+  if (cloudcoverHour> 40 && precipitationSumDay >= 5 && hours >= horaSunset && hours > horaSunrise) {
     return (<div className='background'>
     <img src={noiteChuva} />
   </div>)
-  } else if (precipitationSumDay < 5 && precipitationSumDay > 3 && hours >= horaSunset && hours > horaSunrise) {
+  } else if (cloudcoverHour> 40 && precipitationSumDay < 5 && hours >= horaSunset && hours > horaSunrise) {
     return (<div className='background'>
     <img src={noiteNum} /></div>)
-  } else if (precipitationSumDay <= 3 && hours >= horaSunset && hours > horaSunrise) {
+  } else if (cloudcoverHour< 40 && precipitationSumDay <= 3 && hours >= horaSunset && hours > horaSunrise) {
     return (<div className='background'>
     <img src={noiteBoa} /></div>)
-  } else if (precipitationSumDay >= 5 && hours < horaSunset && hours >= horaSunrise) {
+  } else if (cloudcoverHour> 40 && precipitationSumDay >= 5 && hours < horaSunset && hours >= horaSunrise) {
     return (<div className='background'>
     <img src={diaChuva} /></div>)
-  } else if (precipitationSumDay < 5 && precipitationSumDay > 3 && hours < horaSunset && hours >= horaSunrise) {
+  } else if (cloudcoverHour> 40 && precipitationSumDay < 5 && hours < horaSunset && hours >= horaSunrise) {
     return (<div className='background'>
     <img src={diaNum} /></div>)
   } else {

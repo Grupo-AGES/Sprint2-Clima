@@ -1,9 +1,6 @@
 import React, { Fragment } from "react";
 import Lottie from "lottie-react";
 import diaChuva from "../assets/icones/chuvaDia.json";
-import noiteChuva from "../assets/icones/chuvaNoite.json";
-import noiteNum from "../assets/icones/noiteNum.json";
-import noiteBoa from "../assets/icones/noiteBoa.json";
 import diaNum from "../assets/icones/diaNum.json";
 import diaBom from "../assets/icones/diaBom.json";
 
@@ -11,9 +8,12 @@ function DiasDaSemana(props) {
   const {
     maxSemana,
     minSemana,
-    precipitationSum
+    precipitationSum,
+    cloudcover
   } = props;
 
+  let hours = 12;
+  let cloudcoverHour = []
   const diaSemana = [
     "Domingo",
     "Segunda-feira",
@@ -31,6 +31,8 @@ function DiasDaSemana(props) {
   while (diasDaSemana.length < diaSemana.length - 1) {
     diasDaSemana.push(diaSemana[i]);
     i = (i + 1) % 7;
+    hours+=24
+   cloudcoverHour.push(cloudcover[hours])
   }
 
   return (
@@ -38,12 +40,13 @@ function DiasDaSemana(props) {
       <div className="bodyDiasDaSemana">
         {Array.isArray(diasDaSemana) &&
         Array.isArray(minSemana) &&
+        Array.isArray(cloudcoverHour) &&
         Array.isArray(maxSemana) ? (
           diasDaSemana.map((dia, index) => {
             let icone;
 
             if (
-              precipitationSum[index] >= 5
+              cloudcoverHour[index]> 40 && precipitationSum[index] >= 5
             ) {
               icone = (
                 <div className="animationIconSemana">
@@ -51,8 +54,7 @@ function DiasDaSemana(props) {
                 </div>
               );
             } else if (
-              precipitationSum[index] < 5 &&
-              precipitationSum[index] > 3
+              cloudcoverHour[index]> 40 && precipitationSum[index] < 5
             ) {
               icone = (
                 <div className="animationIconSemana">
