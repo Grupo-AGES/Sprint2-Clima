@@ -2,7 +2,6 @@
   background-color: transparent;
   border: none;
   font-size: 5.5vh;
-  margin-bottom: 3px;
 }
 
 .diaAtual {
@@ -60,7 +59,6 @@
   display: flex;
   flex-direction: column;
   color: white;
-  margin-top: 5vh;
   margin-left: 5vw;
 }
 
@@ -88,7 +86,7 @@
   display: flex;
   flex-direction: column;
   width: 70vw;
-  height: 100vh;
+  height: 90vh;
   justify-content: space-between;
   margin-right: 3vh;
 }
@@ -98,7 +96,7 @@
   flex-direction: row-reverse;
   color: white;
   width: 30vw;
-  height: 90vh;
+  height: 80vh;
 }
 
 /* Dias da Semana */
@@ -173,8 +171,9 @@
 
 .infoMomentoSL {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  width: 60vh;
+  width: 70vh;
 }
 
 .infoMomento {
@@ -182,7 +181,6 @@
   flex-direction: column;
   justify-content: center;
   margin: 50px;
-  margin-top: 12vh;
 }
 
 .min_max {
